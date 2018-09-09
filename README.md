@@ -100,9 +100,9 @@ Modify the `emby` service in [`docker-compose.yml`](docker-compose.yml) and
 update the `volumes` section.  **Do not delete the `emby-data` volume** or your
 emby service will lose its configuration every time the service is restarted.
 
-It is recommended to attach your media as read-only to Emby so that Emby doesn't
-accidentally delete your media.  Mounting as read-only adds an extra layer of
-security.
+It is recommended to attach your media as read-only to Emby so that your media
+isn't accidentally deleted through Emby.  Mounting as read-only adds an extra
+layer of security.
 
 ```yaml
 services:
