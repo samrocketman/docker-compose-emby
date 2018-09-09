@@ -17,7 +17,7 @@ export EMBY_DOCKER_HOME="${PWD}"
 
 function msg() {
   echo "${@}" >&2
-}
+}; declare -rf msg
 
 function die() {
   msg "${@}"
