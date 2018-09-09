@@ -44,6 +44,7 @@ function sha256sum() {
 #
 
 # pre-flight checks before modifying the system
+# just adding an extra layer of safety / quality
 [ "${USER:-$(whoami)}" = root ] ||
   die 'ERROR: must be run as root to install the systemd service.'
 [ -d /lib/systemd ] && type -P systemctl > /dev/null ||
@@ -52,12 +53,14 @@ type -P envsubst > /dev/null ||
   die 'ERROR: missing gettext package.  "yum install gettext" or "apt install gettext"'
 [ -r emby.service ] ||
   die 'ERROR: no emby.service found.  Are you in the right working directory?'
+type -P docker > /dev/null && type -P docker-compose > /dev/null ||
+  die 'ERROR: Missing Docker or docker-compose.  This is required to run the service.'
 
 # Try to install the service.
 if [ -f "${DESTINATION}" ] && sha256sum -c - <<< "$(checksum)  ${DESTINATION}"; then
   msg 'SKIPPED: emby.service is already installed.'
 else
-  msg 'Installing systemd service.'
+  msg 'Installing systemd emby.service.'
   envsubst < emby.service > "${DESTINATION}"
   systemctl daemon-reload
 fi
