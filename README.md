@@ -131,7 +131,13 @@ docker-compose exec -u root emby /bin/bash
 chown -R emby: /media/Emby-Uploaded-Photos
 ```
 
+# See also
+
+- [`my_internal_ca`](https://github.com/samrocketman/my_internal_ca) which is a
+  certificate authority management solution for managing an internal CA.  This
+  can be used to secure Emby with your own CA to gain ultimate trust.
+
 [compose]: https://github.com/docker/compose/releases
+[docker]: https://www.docker.com/
 [emby]: https://emby.media/
 [install-docker]: https://docs.docker.com/install/
-[docker]: https://www.docker.com/
