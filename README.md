@@ -48,9 +48,39 @@ simply uses systemd to control docker-compose on start, stop, and restart.
 >
 >     docker-compose down
 
+### Install emby service
+
 Install Emby as a service.
 
     ./install-emby-service.sh
+
+### Control emby service
+
+Start the service.
+
+    systemctl start emby.service
+
+Stop the service.
+
+    systemctl stop emby.service
+
+Ensure the service autostarts on reboot.
+
+    systemctl enable emby.service
+
+Stop the service from autostarting on reboot.
+
+    systemctl disable emby.service
+
+### Debug emby service
+
+View the current service status.
+
+    systemctl status emby.service
+
+View the systemd logs for the service.
+
+    journalctl -u emby.service
 
 # Customizing Emby version
 
