@@ -1,4 +1,4 @@
-# Emby Media Server
+# Emby Media Server Docker Service
 
 <img
 src="https://user-images.githubusercontent.com/875669/35621322-cf8ec752-0638-11e8-8dbc-72760b696d64.png"
@@ -8,15 +8,17 @@ height=48 width=72 alt="Docker Logo" /> <img
 src="https://emby.media/resources/logowhite_1881.png" height=48 width=157
 alt="Emby Logo" />
 
-This is an easy to manage systemd service which runs Emby Media Server within
-Docker.  By running Emby as a system service using Docker and docker-compose,
-this ensures Emby can be portably run in any `X86_64` system which has systemd
-and Docker available.
+This is an easy to manage service which runs [Emby Media Server][emby] within
+[Docker][docker].
+
+By running Emby as a system service using Docker and docker-compose, this
+ensures Emby can be portably run in any `X86_64` system which has systemd and
+Docker available.
 
 # Prerequisites
 
-* Docker
-* docker-compose
+* [Docker][install-docker]
+* [docker-compose][compose]
 
 # Try out Emby
 
@@ -98,3 +100,8 @@ docker-compose exec -u root emby /bin/bash
 # Now inside of the container change permissions
 chown -R emby: /media/Emby-Uploaded-Photos
 ```
+
+[compose]: https://github.com/docker/compose/releases
+[emby]: https://emby.media/
+[install-docker]: https://docs.docker.com/install/
+[docker]: https://www.docker.com/
