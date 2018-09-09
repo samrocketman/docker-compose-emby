@@ -1,0 +1,19 @@
+# http://container-solutions.com/running-docker-containers-with-systemd/
+# install in /etc/systemd/system/emby.service
+[Unit]
+Description=Emby Media Server
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=${EMBY_DOCKER_HOME}
+TimeoutStartSec=0
+Restart=always
+EnvironmentFile=-/etc/sysconfig/docker.emby
+# execstartpre is not necessary when using docker-compose
+#ExecStartPre=/usr/local/sbin/docker-compose pull
+ExecStart=/usr/local/sbin/docker-compose run --service-ports emby
+ExecStop=/usr/local/sbin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
